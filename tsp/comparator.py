@@ -1,8 +1,8 @@
 import tsp
 import sqtsp
 
-MAX_CITIES=40
-MIN_CITIES=35
+MAX_CITIES=30
+MIN_CITIES=5
 
 print("comparing solutions")
 

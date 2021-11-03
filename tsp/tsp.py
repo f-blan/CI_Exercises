@@ -175,6 +175,9 @@ def execute(num_cities):
     
     solution_cost, solution_pos, solution_costs = problem.evaluate_solution(solution)
     
+    best_solution = solution[solution_pos]
+    best_cost = solution_cost
+
     if __name__ == '__main__':
         problem.plot(solution[solution_pos])
         print(f"Current path: {solution_cost}")
@@ -189,18 +192,20 @@ def execute(num_cities):
         new_solution_cost, new_solution_pos, new_solution_costs = problem.evaluate_solution(new_solution)
         solution = new_solution
         solution_costs = new_solution_costs
-        if new_solution_cost < solution_cost:
-            solution_cost = new_solution_cost
-            solution_pos = new_solution_pos
-            history.append((step, solution_cost))
+        if new_solution_cost < best_cost:
+            
+            best_cost = new_solution_cost
+            best_solution = solution[new_solution_pos]
+            history.append((step, best_cost))
             steady_state = 0
         if step > MAX_STEPS:
             break
     if __name__ == '__main__':
-        problem.plot(solution[solution_pos])
-        print(f"Current path: {solution_cost}, number of steps: {step}")
+        problem.plot(best_solution)
+        print(f"Current path: {best_cost}, number of steps: {step}")
+
     
-    return solution_cost
+    return best_cost
     
 
 
