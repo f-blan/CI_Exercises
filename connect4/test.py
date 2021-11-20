@@ -1,7 +1,12 @@
 import numpy as np
 import math
 from collections import Counter
-from c4 import match 
 
-board = board = np.zeros((NUM_COLUMNS, COLUMN_HEIGHT), dtype=np.byte)
-match(board)
+def winrate_to_score(winrate, player):
+    if player == 1:
+        return winrate*2 -1
+    else:
+        return (1-winrate)*2 -1
+
+print(winrate_to_score(0.3, 1))
+print(winrate_to_score(1, -1))
